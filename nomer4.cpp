@@ -19,7 +19,7 @@ printf("Hasil %d! = %d\n",num, fac);
 
 
 
-int main (int argc, char* argv[]){
+int main (int argc, char *argv[]){
     pthread_t thread[argc];
     int a, sommpen;
     
