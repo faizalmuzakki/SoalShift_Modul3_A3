@@ -1,62 +1,8 @@
-/*#include <stdio.h>
-#include <pthread.h>
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
-
-/*Word Frequency Counter
- * Input harus satu-satu, contoh: ./cari Fina
-
-
-
-
-
-FILE *filein;
-
-void *freq_count(void *asda){
-	filein=fopen("/home/solork/repo/git/Novel.txt", "r");
-	char *opongono=(char *) asda;
-	char string[2000];
-	int freq, temp;
-	int anu;
-	if(filein==NULL) printf("hehe");
-	while(!feof(filein)){
-		fscanf(filein, "%s", string);
-		int i;
-		for(anu=0; anu<500; anu++){
-			if(string[anu]=='.' || string[anu]==',') string[anu]='\0';
-		}
-		if(!strcmp(string, opongono)) freq++;
-	}
-	printf("%s: ",opongono);
-	printf("%d\n", freq);
-}
-
-int main(int argc, char **argv){
-	pthread_t t[argc];
-	while(--argc){
-		pthread_create(&t[argc], NULL, &freq_count, argv[argc]);
-		pthread_join(t[argc], NULL);
-	}
-	
-//	while(--j){
-//	}
-	return 0;
-}
-*/
-
 #include <stdio.h>
 #include <pthread.h>
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-
-/*Word Frequency Counter
- * Input harus satu-satu, contoh: ./cari Fina*/
-
-
-
-
 
 FILE *filein;
 
