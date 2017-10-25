@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <pthread.h>
 #include <string.h>
@@ -27,7 +28,6 @@ void *freq_count(void *asda){
 		for(anu=0; anu<500; anu++){
 			if(string[anu]=='.' || string[anu]==',') string[anu]=' ';
 		}
-		printf("%s ", string);
 		if(string[i]==opongono[i]) if(string[i+1]==opongono[i+1]) if(string[i+2]==opongono[i+2]) if(string[i+3]==opongono[i+3]) freq[k]++;
 //		if(!strcmp(string, opongono)) freq[k]++;
 	}
