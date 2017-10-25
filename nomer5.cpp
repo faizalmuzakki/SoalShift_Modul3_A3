@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <pthread.h>
 #include <string.h>
@@ -17,23 +16,23 @@ int j, k=0;
 
 void *freq_count(void *asda){
 	char *opongono=(char *) asda;
-	char string[500];
+	char string[2000];
 	int freq[j];
 	int anu;
-	printf("%s: ",opongono);
 	if(filein==NULL) printf("hehe");
 	while(!feof(filein)){
 		fscanf(filein, "%s", string);
 		int i;
 		for(anu=0; anu<500; anu++){
-			if(string[anu]=='.' || string[anu]==',') string[anu]=' ';
+			if(string[anu]=='.' || string[anu]==',') string[anu]='\0';
 		}
-		if(string[i]==opongono[i]) if(string[i+1]==opongono[i+1]) if(string[i+2]==opongono[i+2]) if(string[i+3]==opongono[i+3]) freq[k]++;
-//		if(!strcmp(string, opongono)) freq[k]++;
+//		if(string[i]==opongono[i]) if(string[i+1]==opongono[i+1]) if(string[i+2]==opongono[i+2]) if(string[i+3]==opongono[i+3]) freq[k]++;
+		if(!strcmp(string, opongono)) freq[k]++;
+		printf("%s ", string);
 	}
+	printf("\n%s: ",opongono);
 	printf("%d\n", freq[k]);
 	k++;
-	sleep(1);
 }
 
 int main(int argc, char **argv){
