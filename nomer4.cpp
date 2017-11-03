@@ -7,8 +7,6 @@
 
 using namespace std;
 
-int arr[1000];
-
 void* factorial(void* fac)
 {
 	int num = *((int *) fac);

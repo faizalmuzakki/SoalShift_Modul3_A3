@@ -1,40 +1,60 @@
 #include <stdio.h>
 #include <pthread.h>
 #include <unistd.h>
+#include <stdlib.h>
 
-int statLohan=100, statKepiting=100;
+pthread_t t[3];
+int statLohan=100, statKepiting=100, hewan;
 
 void *lohan(void *){
-	statLohan-=15;
-	printf("Lohan Stat: %d", statLohan);
-	sleep(10);
+	while(1){
+		sleep(10);
+		statLohan-=15;
+	}
 }
 
 void *kepiting(void *){
-	statKepiting-=10;
-	printf("Kepiting Stat: %d", statKepiting);
-	sleep(20);
+	while(1){
+		sleep(20);
+		statKepiting-=10;
+	}
 }
 
-
-void Feeding(void *){
-	int food, hewan;
-	printf("Makan?\n1. Lohan\n2. Kepiting\nYour Ans: ");
+void *feeding(void *){
+	int hewan;
+	printf("Status Lohan: %d\n", statLohan);
+	printf("Status Kepiting: %d\n", statKepiting);
+	printf("Beri makan?\n\t1. Lohan\n\t2. Kepiting\n");
 	scanf("%d", &hewan);
 	if(hewan==1) statLohan+=10;
 	else if(hewan==2) statKepiting+=10;
-	else printf("Input sing nggenah!");
-	sleep(1);
+	else printf("Input yang bener njeng\n");
 }
 
 int main(){
-	pthread_t t1, t2, t3;
-	int anu1, anu2, anu3;
-	anu1 = pthread_create(&t1, NULL, &lohan, NULL);
-	anu2 = pthread_create(&t2, NULL, &kepiting, NULL);
-	anu3 = pthread_create(&t1, NULL, &Feeding, NULL);
-	pthread_join(t1, NULL);
-    pthread_join(t2, NULL); 
-    pthread_join(t3, NULL); 
-    if(statLohan<=0 || statKepiting<=0 || statLohan>100 ||statKepiting>100) return 0;
+	pthread_t t[3];
+	pthread_create(&t[0], NULL, &lohan, NULL);
+	pthread_create(&t[1], NULL, &kepiting, NULL);
+	while(1){
+		system("clear");
+		pthread_create(&t[2], NULL, &feeding, NULL);
+		if(statKepiting > 100){
+			printf("Kepiting kekenyangan, Si Kepiting mati :(\n");
+			break;
+		}
+		if(statKepiting < 0){
+			printf("Kepiting kelaparan, Si Kepiting mati :(\n");
+			break;
+		}
+		if(statLohan > 100){
+			printf("Lohan kekenyangan, Lohan mati :(\n");
+			break;
+		}
+		if(statLohan < 0){
+			printf("Kepiting kelaparan, Si Lohan mati :(\n");
+			break;
+		}
+		sleep(1);
+	}
+	return 0;
 }
